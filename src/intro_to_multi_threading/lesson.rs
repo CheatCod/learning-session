@@ -6,14 +6,16 @@ pub mod basic_thread {
     fn main() {
         // `thread::spawn` creates a new thread and runs the closure passed to it
         let thread_1_handle = thread::spawn(|| {
-            for i in 1..10 {
-                println!("hi number {} from the first spawned thread", i);
+            for i in 1..100 {
+                thread::sleep(Duration::from_millis(1));
+                println!("[thread 1] {i}");
             }
         });
 
         let thread_2_handle = thread::spawn(|| {
-            for i in 1..10 {
-                println!("hi number {} from the second spawned thread", i);
+            for i in 1..100 {
+                thread::sleep(Duration::from_millis(10));
+                println!("[thread 2] {i}");
             }
         });
 
